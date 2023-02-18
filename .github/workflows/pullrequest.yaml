@@ -7,9 +7,12 @@ env:
   DEFAULT_ROOTFS_VERSION: bullseye
 
 jobs:
+  output-env-vars:
+    outputs:
+      default_rootfs_version: ${{ env.$DEFAULT_ROOTFS_VERSION }}      
   verify-and-scan:
     permissions:
       security-events: write  
     uses: ./.github/workflows/wf_verifyandscan.yaml
     with:
-      rootfs_version: ${{ env.$DEFAULT_ROOTFS_VERSION }}
+      rootfs_version: ${{ needs.vars.outputs.default_rootfs_version }}
