@@ -1,4 +1,10 @@
-on: [pull_request]
+name: Verify and scan container image
+on:
+  workflow_call:
+    inputs:
+      rootfs-version:
+        required: true
+        type: string
 
 jobs:
   verify-image:
@@ -9,11 +15,11 @@ jobs:
       - name: Checkout pull request
         uses: actions/checkout@master
       - name: Build a temporary image for verification
-        run: docker build . -t groundhog2k/distroless-base-image:verify
+        run: docker build . -t groundhog2k/distroless-base-image:${{ inputs.rootfs-version }} --build-arg ROOTFS_VERSION=${{ inputs.rootfs-version }}
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: "groundhog2k/distroless-base-image:verify"
+          image-ref: "groundhog2k/distroless-base-image:${{ inputs.rootfs-version }}"
           format: "sarif"
           output: "trivy-results.sarif"
       - name: Upload Trivy scan results to GitHub Security tab
@@ -25,7 +31,7 @@ jobs:
         id: scan
         uses: anchore/scan-action@v3
         with:
-          image: "groundhog2k/distroless-base-image:verify"
+          image: "groundhog2k/distroless-base-image:${{ inputs.rootfs-version }}"
           severity-cutoff: "low"
           fail-build: false
           output-format: "sarif"
