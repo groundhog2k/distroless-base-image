@@ -8,8 +8,12 @@ env:
 
 jobs:
   output-env-vars:
+    runs-on: ubuntu-latest
     outputs:
       default_rootfs_version: ${{ env.$DEFAULT_ROOTFS_VERSION }}      
+    steps:
+      - run: echo "Exposing env variables"
+
   verify-and-scan:
     permissions:
       security-events: write  
