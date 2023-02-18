@@ -3,10 +3,10 @@ on:
   pull_request:
 
 env:
-  default_rootfs_version: "bullseye"
+  DEFAULT_ROOTFS_VERSION: "bullseye"
 
 jobs:
   verify-and-scan:
     uses: ./.github/workflows/wf_verifyandscan.yaml
     with:
-      rootfs_version: ${{ env.default_rootfs_version }}
+      rootfs_version: ${{ env.DEFAULT_ROOTFS_VERSION }}
