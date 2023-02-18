@@ -1,6 +1,7 @@
 name: Pull request
 
-on: [pull_request]
+on:
+  pull_request:
 
 env:
   DEFAULT_ROOTFS_VERSION: bullseye
@@ -9,4 +10,4 @@ jobs:
   verify-and-scan:
     uses: ./.github/workflows/wf_verifyandscan.yaml
     with:
-      rootfs_version: ${{ env.DEFAULT_ROOTFS_VERSION }}
+      rootfs_version: $DEFAULT_ROOTFS_VERSION
