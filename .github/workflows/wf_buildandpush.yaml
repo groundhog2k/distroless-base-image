@@ -2,6 +2,9 @@ name: Build and push container image
 on:
   workflow_call:
     inputs:
+      rootfs_version:
+        required: true
+        type: string    
       tags:
         required: true
         type: string
@@ -29,6 +32,8 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: ${{ inputs.tags }}
+          build-args: |
+            ROOTFS_VERSION=${{ inputs.rootfs_version }}
           labels: |
             org.opencontainers.image.title=${{ github.event.repository.name }}
             org.opencontainers.image.description=${{ github.event.repository.description }}
