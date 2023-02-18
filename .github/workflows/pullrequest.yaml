@@ -1,0 +1,12 @@
+name: Pull request
+
+on:
+  pull_request:
+
+jobs:
+  verify-and-scan:
+    permissions:
+      security-events: write  
+    uses: ./.github/workflows/wf_verifyandscan.yaml
+    with:
+      rootfs_version: "bullseye"
