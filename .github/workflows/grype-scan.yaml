@@ -7,6 +7,8 @@ jobs:
     permissions:
       security-events: write
     steps:
+      - name: Checkout mainline
+        uses: actions/checkout@master    
       - name: Run Grype vulnerability scanner
         id: scan
         uses: anchore/scan-action@v3

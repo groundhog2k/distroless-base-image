@@ -8,5 +8,7 @@ jobs:
         uses: actions/checkout@master
       - name: Build a temporary image for verification
         run: docker build . -t groundhog2k/distroless-base-image:verify
-      - uses: ./.github/workflows/trivy-scan.yaml
-      - uses: ./.github/workflows/grype-scan.yaml
+      - name: Scan with Trivy
+        uses: ./.github/workflows/trivy-scan.yaml
+      - name: Scan with Grype
+        uses: ./.github/workflows/grype-scan.yaml
