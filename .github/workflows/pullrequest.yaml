@@ -3,20 +3,10 @@ name: Pull request
 on:
   pull_request:
 
-env:
-  DEFAULT_ROOTFS_VERSION: bullseye
-
 jobs:
-  output-env-vars:
-    runs-on: ubuntu-latest
-    outputs:
-      default_rootfs_version: ${{ env.$DEFAULT_ROOTFS_VERSION }}      
-    steps:
-      - run: echo "Exposing env variables"
-
   verify-and-scan:
     permissions:
       security-events: write  
     uses: ./.github/workflows/wf_verifyandscan.yaml
     with:
-      rootfs_version: ${{ needs.vars.outputs.default_rootfs_version }}
+      rootfs_version: "bullseye"

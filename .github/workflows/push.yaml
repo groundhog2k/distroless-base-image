@@ -3,11 +3,9 @@ on:
   push:
     branches:
       - main
-  schedule:
-    - cron: "0 0 * * 1"
 
 jobs:
-  build-and-push:
+  build-and-push-bullseye:
     uses: ./.github/workflows/wf_buildandpush.yaml
     with:
       tags: "groundhog2k/distroless-base-image:11, groundhog2k/distroless-base-image:bullseye"
