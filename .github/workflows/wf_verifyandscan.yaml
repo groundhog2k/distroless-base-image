@@ -9,8 +9,6 @@ on:
 jobs:
   verify-image:
     runs-on: ubuntu-latest
-    permissions:
-      security-events: write    
     steps:
       - name: Checkout pull request
         uses: actions/checkout@master

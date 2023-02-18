@@ -8,6 +8,8 @@ env:
 
 jobs:
   verify-and-scan:
+    permissions:
+      security-events: write  
     uses: ./.github/workflows/wf_verifyandscan.yaml
     with:
       rootfs_version: $DEFAULT_ROOTFS_VERSION
