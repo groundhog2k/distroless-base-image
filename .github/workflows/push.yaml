@@ -6,6 +6,7 @@ on:
 
 jobs:
   build-and-push-bullseye:
+    secrets: inherit
     uses: ./.github/workflows/wf_buildandpush.yaml
     with:
       tags: "groundhog2k/distroless-base-image:11, groundhog2k/distroless-base-image:bullseye"
