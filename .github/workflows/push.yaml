@@ -5,9 +5,9 @@ on:
       - main
 
 jobs:
-  build-and-push-bookworm:
+  build-and-push-bullseye:
     secrets: inherit
     uses: ./.github/workflows/wf_buildandpush.yaml
     with:
-      rootfs_version: "bookworm"
-      tags: "groundhog2k/distroless-base-image:12, groundhog2k/distroless-base-image:bookworm"
+      rootfs_version: "bullseye"
+      tags: "groundhog2k/distroless-base-image:11, groundhog2k/distroless-base-image:bullseye"

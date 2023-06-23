@@ -9,4 +9,4 @@ jobs:
       security-events: write  
     uses: ./.github/workflows/wf_verifyandscan.yaml
     with:
-      rootfs_version: "bookworm"
+      rootfs_version: "bullseye"
