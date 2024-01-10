@@ -5,6 +5,9 @@ on:
       rootfs_version:
         required: true
         type: string
+      dockerfile:
+        required: true
+        type: string
 
 jobs:
   verify-image:
@@ -13,7 +16,7 @@ jobs:
       - name: Checkout pull request
         uses: actions/checkout@master
       - name: Build a temporary image for verification
-        run: docker build . -t groundhog2k/distroless-base-image:${{ inputs.rootfs_version }} --build-arg ROOTFS_VERSION=${{ inputs.rootfs_version }}
+        run: docker build . -t groundhog2k/distroless-base-image:${{ inputs.rootfs_version }} --build-arg ROOTFS_VERSION=${{ inputs.rootfs_version }} -f ${{ inputs.dockerfile }}
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
