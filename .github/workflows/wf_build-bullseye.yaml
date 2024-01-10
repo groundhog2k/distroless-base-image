@@ -4,7 +4,7 @@ on:
 
 jobs:
     build-and-push-bullseye:
-      uses: ./.github/workflows/jobs/wf_buildandpush.yaml
+      uses: ./.github/workflows/wf_buildandpush.yaml
       with:
         rootfs_version: "bullseye"
         dockerfile: "Dockerfile.11"

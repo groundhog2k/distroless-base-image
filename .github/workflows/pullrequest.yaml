@@ -7,14 +7,14 @@ jobs:
   verify-and-scan-bullseye:
     permissions:
       security-events: write  
-    uses: ./.github/workflows/jobs/wf_verifyandscan.yaml
+    uses: ./.github/workflows/wf_verifyandscan.yaml
     with:
       rootfs_version: "bullseye"
       dockerfile: "Dockerfile.11"
   verify-and-scan-bookworm:
     permissions:
       security-events: write  
-    uses: ./.github/workflows/jobs/wf_verifyandscan.yaml
+    uses: ./.github/workflows/wf_verifyandscan.yaml
     with:
       rootfs_version: "bookworm"
       dockerfile: "Dockerfile.12"
