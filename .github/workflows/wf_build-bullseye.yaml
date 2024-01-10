@@ -4,6 +4,7 @@ on:
 
 jobs:
     build-and-push-bullseye:
+      secrets: inherit
       uses: ./.github/workflows/wf_buildandpush.yaml
       with:
         rootfs_version: "bullseye"
