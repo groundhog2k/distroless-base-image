@@ -4,15 +4,9 @@ on:
     - cron: "0 0 * * 1"
 
 jobs:
-  verify-and-scan-bullseye:
-    permissions:
-      security-events: write
-    uses: ./.github/workflows/wf_verifyandscan.yaml
-    with:
-      rootfs_version: "bullseye"
   build-and-push-bullseye:
     secrets: inherit
-    uses: ./.github/workflows/wf_buildandpush.yaml
-    with:
-      rootfs_version: "bullseye"
-      tags: "groundhog2k/distroless-base-image:11, groundhog2k/distroless-base-image:bullseye"
+    uses: ./.github/workflows/wf_build-bullseye.yaml
+  build-and-push-bookworm:
+    secrets: inherit
+    uses: ./.github/workflows/wf_build-bookworm.yaml
