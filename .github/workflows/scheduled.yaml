@@ -4,9 +4,9 @@ on:
     - cron: "0 0 * * 1"
 
 jobs:
-  build-and-push-bullseye:
+  build-and-push-trixie:
     secrets: inherit
-    uses: ./.github/workflows/wf_build-bullseye.yaml
+    uses: ./.github/workflows/wf_build-trixie.yaml
   build-and-push-bookworm:
     secrets: inherit
     uses: ./.github/workflows/wf_build-bookworm.yaml

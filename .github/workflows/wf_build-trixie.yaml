@@ -1,0 +1,12 @@
+name: Build and push Debian 13 based image
+on:
+  workflow_call:
+
+jobs:
+    build-and-push-trixie:
+      secrets: inherit
+      uses: ./.github/workflows/wf_buildandpush.yaml
+      with:
+        rootfs_version: "trixie"
+        dockerfile: "Dockerfile.13"
+        tags: "groundhog2k/distroless-base-image:13, groundhog2k/distroless-base-image:trixie"

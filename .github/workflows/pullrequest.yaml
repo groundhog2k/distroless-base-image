@@ -9,8 +9,8 @@ jobs:
       security-events: write  
     uses: ./.github/workflows/wf_verifyandscan.yaml
     with:
-      rootfs_version: "bullseye"
-      dockerfile: "Dockerfile.11"
+      rootfs_version: "trixie"
+      dockerfile: "Dockerfile.13"
   verify-and-scan-bookworm:
     permissions:
       security-events: write  
